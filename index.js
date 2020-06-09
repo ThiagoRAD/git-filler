@@ -3,7 +3,7 @@ const { exec } = require('child_process');
 
 const getRandomYear = () => {
   const currentYear = new Date().getFullYear();
-  return Math.floor(Math.random() * (currentYear - 2017 + 1)) + 2017;
+  return Math.floor(Math.random() * (currentYear - 2018 + 1)) + 2018;
 }
 
 const getRandomFromList = (list) => {
