@@ -4,7 +4,7 @@ const util = require('util');
 const execAsync = util.promisify(exec);
 
 getRandomDate = () => {
-  const start = new Date(2018, 0, 1);
+  const start = new Date(2017, 2, 12);
   const end = new Date();
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 };
