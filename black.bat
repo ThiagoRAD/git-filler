@@ -1,1 +1,1 @@
-"node" "C:\black\git-filler\index.js" %* 
+"node" "C:\black\git-filler\version2.js" %* 

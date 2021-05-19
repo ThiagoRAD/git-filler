@@ -7,14 +7,12 @@ getRandomDate = () => {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 };
 
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-async function doCommits(commit = 'update') {
+function doCommits(commit = 'update') {
   const date = getRandomDate();
   const today = new Date();
   const differenceInDays = Math.floor((today - date) / (1000 * 60 * 60 * 24));
   const message = `git commit --date "${differenceInDays} day ago" -m "${commit}"`;
-  exec('git ls-files --others --exclude-standard', (error, stdout, stderr) => {
+  exec('git ls-files --others --modified --deleted --exclude-standard', (error, stdout, stderr) => {
     const files = stdout.split('\n').filter((f) => f);
     for (const file of files) {
       exec(`git add ${file}`, () => {
