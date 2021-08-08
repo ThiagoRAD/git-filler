@@ -13,7 +13,7 @@ async function doCommits(commit = 'update') {
   try {
     
     const {stdout} = await execAsync('git ls-files --others --modified --deleted --exclude-standard');
-    const files = stdout.split('\n').filter((f) => f);
+    const files = new Set(stdout.split('\n').filter((f) => f));
     
     for (const file of files) {
       const date = getRandomDate();
