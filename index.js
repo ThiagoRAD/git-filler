@@ -32,7 +32,5 @@ async function getCommitsByDate(username, year, commit = 'fix: last commit') {
 
 const commitMessageRegex = /index\.js\s(.+)/
 const args = process.argv.join(" ")
-console.log("***************************")
-console.log("args", args)
 const message = commitMessageRegex.exec(args)[1];
-getCommitsByDate('ThiagoRAD', 2023, message).then(() => console.log('Done'))
+getCommitsByDate('ThiagoRAD', 2023, message)
