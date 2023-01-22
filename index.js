@@ -27,6 +27,7 @@ async function getCommitsByDate(username, year, commit = 'fix: last commit') {
             return;
         }
         console.log(`Command executed successfully: ${stdout}`);
+        exec("git push")
     });
 }
 
