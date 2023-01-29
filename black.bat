@@ -1,1 +1,1 @@
-"C:\Program Files\nodejs\node.exe" "C:\STUDY\git-commits\index.js" %*
+"node" "C:\black\git-filler\index.js" %*
