@@ -11,15 +11,15 @@ getRandomDate = () => {
 
 async function doCommits(commit = 'update') {
   try {
-    const date = getRandomDate();
-    const today = new Date();
-    const differenceInDays = Math.floor((today - date) / (1000 * 60 * 60 * 24));
-    const message = `git commit --date "${differenceInDays} day ago" -m "${commit}"`;
     
     const {stdout} = await execAsync('git ls-files --others --modified --deleted --exclude-standard');
     const files = stdout.split('\n').filter((f) => f);
     
     for (const file of files) {
+      const date = getRandomDate();
+      const today = new Date();
+      const differenceInDays = Math.floor((today - date) / (1000 * 60 * 60 * 24));
+      const message = `git commit --date "${differenceInDays} day ago" -m "${commit}"`;
       await execAsync(`git add ${file}`);
       await execAsync(message, {env: {...process.env, GIT_COMMITER_DATE: date.toISOString()}});
       console.log(date.toISOString());
