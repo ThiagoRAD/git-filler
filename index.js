@@ -26,7 +26,7 @@ async function getCommitsByDate(username, year, commit = 'fix: last commit') {
             console.error(`Error: ${stderr}`);
             return;
         }
-        console.log(`Command executed successfully: ${stdout}`);
+        console.log("success")
         exec("git push")
     });
 }
@@ -34,4 +34,4 @@ async function getCommitsByDate(username, year, commit = 'fix: last commit') {
 const commitMessageRegex = /index\.js\s(.+)/
 const args = process.argv.join(" ")
 const message = commitMessageRegex.exec(args)[1];
-getCommitsByDate('ThiagoRAD', 2023, message)
+getCommitsByDate('ThiagoRAD', 2024, message)
