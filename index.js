@@ -26,7 +26,7 @@ async function getCommitsByDate(username, year, commit = 'fix: last commit') {
             console.error(`Error: ${stderr}`);
             return;
         }
-        console.log("success")
+        console.log(stdout)
         exec("git push")
     });
 }
