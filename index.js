@@ -17,6 +17,7 @@ async function getCommitsByDate(username, year, commit = 'fix: last commit') {
     const today = new Date();
     const differenceInDays = Math.floor((today - date) / (1000 * 60 * 60 * 24));
     const message = `git commit --date "${differenceInDays} day ago" -m "${commit}"`
+    exec("git add .")
     exec(message, {env: { ...process.env, GIT_COMMITER_DATE: date.toISOString()}},(error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing command: ${error.message}`);
