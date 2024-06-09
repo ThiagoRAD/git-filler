@@ -17,19 +17,20 @@ async function getCommitsByDate(username, year, commit = 'fix: last commit') {
     const today = new Date();
     const differenceInDays = Math.floor((today - date) / (1000 * 60 * 60 * 24));
     const message = `git commit --date "${differenceInDays} day ago" -m "${commit}"`
-    exec("git add .")
-    exec(message, {env: { ...process.env, GIT_COMMITER_DATE: date.toISOString()}},(error, stdout, stderr) => {
+    exec("git add .", (error, stdout, stderr) => {
+      exec(message, {env: { ...process.env, GIT_COMMITER_DATE: date.toISOString()}},(error, stdout, stderr) => {
         if (error) {
-            console.error(`Error executing command: ${error.message}`);
-            return;
+          console.error(`Error executing command: ${error.message}`);
+          return;
         }
         if (stderr) {
-            console.error(`Error: ${stderr}`);
-            return;
+          console.error(`Error: ${stderr}`);
+          return;
         }
         console.log(stdout)
         exec("git push")
-    });
+      });
+    })
 }
 
 const commitMessageRegex = /index\.js\s(.+)/
