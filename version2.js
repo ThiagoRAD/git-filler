@@ -24,6 +24,7 @@ async function doCommits(commit = 'update') {
     for (const file of files) {
       await execAsync(`git add ${file}`);
       await execAsync(message, {env: {...process.env, GIT_COMMITER_DATE: date.toISOString()}});
+      console.log(date.toISOString());
     }
     
     // Push changes
